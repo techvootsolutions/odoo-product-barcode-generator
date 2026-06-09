@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_template_form_barcode_generator" model="ir.ui.view">
+        <field name="name">product.template.form.barcode.generator</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+
+        <xpath expr="//field[@name='barcode']" position="after">
+            <field name="barcode_image" widget="image" options="{'size':[120,120]}"/>
+            <button name="action_generate_barcode" type="object" string="Generate Barcode" class="btn-primary" groups="tv_product_barcode_generate.group_tv_product_barcode_generate"/>
+            <button name="action_generate_barcode_image" type="object" string="Generate Image" class="oe_link d-block" groups="tv_product_barcode_generate.group_tv_product_barcode_generate"/>
+        </xpath>
+       
+        
+        </field>
+    </record>
+
+    <record id="product_barcode_server_action" model="ir.actions.server">
+        <field name="name">Generate Barcode</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="binding_type">action</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = {
+                "type": "ir.actions.act_window",
+                "res_model": "barcode.generate.wizard",
+                "view_mode": "form",
+                "target": "new",
+            }
+        </field>
+    </record>
+
+    <record id="product_barcode_image_server_action" model="ir.actions.server">
+        <field name="name">Generate Barcode Image</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="binding_type">action</field>
+        <field name="state">code</field>
+        <field name="code">
+    for record in records:
+        record._generate_barcode_image()
+        </field>
+    </record>
+    
+</odoo>

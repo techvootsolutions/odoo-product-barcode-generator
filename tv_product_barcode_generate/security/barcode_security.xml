@@ -1,0 +1,10 @@
+<odoo>
+
+    <record id="group_tv_product_barcode_generate" model="res.groups">
+
+        <field name="name">Barcode Generator</field>
+        <!-- <field name="category_id" ref="base.module_category_sales_management"/> -->
+
+    </record>
+
+</odoo>
