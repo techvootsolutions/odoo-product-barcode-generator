@@ -5,11 +5,14 @@
     <title>Product Barcode Generator for Odoo | Auto Generate Unique Barcodes | Techvoot</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Automatically generate unique product barcodes in Odoo with Techvoot's Product Barcode Generator. Supports bulk generation, Code128, EAN13, configurable sequences, and barcode image preview. Compatible with Odoo Community, Enterprise & Odoo.sh." />
-    <meta name="keywords" content="Odoo product barcode generator, generate barcodes Odoo, Odoo barcode module, bulk barcode generation Odoo, EAN13 barcode Odoo, Code128 Odoo, Techvoot Odoo apps" />
+    <meta name="description"
+        content="Automatically generate unique product barcodes in Odoo with Techvoot's Product Barcode Generator. Supports bulk generation, Code128, EAN13, configurable sequences, and barcode image preview. Compatible with Odoo Community, Enterprise & Odoo.sh." />
+    <meta name="keywords"
+        content="Odoo product barcode generator, generate barcodes Odoo, Odoo barcode module, bulk barcode generation Odoo, EAN13 barcode Odoo, Code128 Odoo, Techvoot Odoo apps" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -21,10 +24,12 @@
             border: none !important;
             transition: all 0.2s;
         }
+
         .nav-pills .nav-link:hover {
             background: #e6f7f8 !important;
             color: #2fa3a8 !important;
         }
+
         .nav-pills .nav-link.active {
             background-color: #2fa3a8 !important;
             color: #ffffff !important;
@@ -35,512 +40,674 @@
 
 <body style="font-family: 'Plus Jakarta Sans', sans-serif; background: #f7fafa; color: #1a2332; margin: 0; padding: 0;">
 
-<div style="font-family: 'Plus Jakarta Sans', sans-serif; background: #f7fafa; color: #1a2332; width: 100%;">
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; background: #f7fafa; color: #1a2332; width: 100%;">
 
-    <!-- ══════════════════════════════════════════
+        <!-- ══════════════════════════════════════════
          HEADER
     ══════════════════════════════════════════ -->
-    <div style="background: #ffffff; border-bottom: 2px solid #d4edef; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; box-shadow: 0 2px 12px rgba(47,163,168,.10);">
-        <div>
-            <a class="btn p-1" style="padding: 4px; display: inline-block;">
-                <img src="images/techvoot.svg" alt="techvoot-logo" style="height:36px !important; width: auto !important; display: block;">
-            </a>
+        <div
+            style="background: #ffffff; border-bottom: 2px solid #d4edef; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; box-shadow: 0 2px 12px rgba(47,163,168,.10);">
+            <div>
+                <a class="btn p-1" style="padding: 4px; display: inline-block;">
+                    <img src="images/techvoot.svg" alt="techvoot-logo"
+                        style="height:36px !important; width: auto !important; display: block;">
+                </a>
+            </div>
+            <div class="col-auto d-flex flex-wrap justify-content-center py-2">
+                <div class="text-center">
+                    <a href="https://apps.odoo.com/apps/modules/browse?search=techvoot" target="_blank" class="btn btn-sm mb-2 mb-lg-0 p-2" style="font-size: 13px;font-size: 14px; font-weight: 500;background-color: #2fa3a8; color: #ffffff;"><i class="fa fa-hand-o-right mr-1"></i> <span class="d-none d-sm-inline">Mindphin</span> All Apps</a>
+                </div>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                <!-- <span
+                    style="display: inline-flex; align-items: center; gap: 5px; background: transparent; background-color: #2fa3a8; color: #ffffff; font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-right: 4px;"><i
+                        class="fa fa-check" style="margin-right: 4px;"></i> Community</span> -->
+                <span class="btn btn-sm mb-2 mb-lg-0 p-2" style="font-size: 13px;font-size: 14px; font-weight: 500;background-color: #2fa3a8; color: #ffffff;"><i class="fa fa-check"></i> Community</span>
+                <span class="btn btn-sm mb-2 mb-lg-0 p-2" style="font-size: 13px;font-size: 14px; font-weight: 500;background-color: #2fa3a8; color: #ffffff;"><i class="fa fa-check"></i> Enterprise</span>
+                <span class="btn btn-sm mb-2 mb-lg-0 p-2" style="font-size: 13px;font-size: 14px; font-weight: 500;background-color: #2fa3a8; color: #ffffff;"><i class="fa fa-check"></i> Odoo.sh</span>
+            </div>
         </div>
-        <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
-            <a href="https://apps.odoo.com/apps/modules/browse?search=techvoot" target="_blank" style="display: inline-flex; align-items: center; gap: 5px; background: #2fa3a8; color: #ffffff; font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 20px; text-decoration: none;">
-                <i class="fa fa-th-large" style="margin-right: 5px;"></i> Techvoot All Apps
-            </a>
-        </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-            <span style="display: inline-flex; align-items: center; gap: 5px; background: transparent; border: 1.5px solid #2fa3a8; color: #2fa3a8; font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-right: 4px;"><i class="fa fa-check" style="margin-right: 4px;"></i> Community</span>
-            <span style="display: inline-flex; align-items: center; gap: 5px; background: transparent; border: 1.5px solid #2fa3a8; color: #2fa3a8; font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-right: 4px;"><i class="fa fa-check" style="margin-right: 4px;"></i> Enterprise</span>
-            <span style="display: inline-flex; align-items: center; gap: 5px; background: transparent; border: 1.5px solid #2fa3a8; color: #2fa3a8; font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 20px;"><i class="fa fa-check" style="margin-right: 4px;"></i> Odoo.sh</span>
-        </div>
-    </div>
 
 
-    <!-- ══════════════════════════════════════════
+        <!-- ══════════════════════════════════════════
          HERO
     ══════════════════════════════════════════ -->
-    <div style="background: linear-gradient(135deg, #e6f7f8 0%, #f0fbfb 50%, #ffffff 100%); padding: 56px 24px 40px; text-align: center; position: relative;">
-        <h1 style="font-size: 32px; font-weight: 800; color: #2fa3a8; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 8px 0;">Product Barcode Generator for Odoo</h1>
-        <span style="display: block; width: 72px; height: 4px; background: linear-gradient(90deg, #2fa3a8, #7dd4d7); border-radius: 4px; margin: 14px auto 0;"></span>
-        <p style="font-size: 15px; color: #3d4f61; max-width: 740px; margin: 20px auto 0; line-height: 1.8;">
-            Struggling with manual barcode entry, duplicate codes, or untagged products?
-            <b>Techvoot's Product Barcode Generator</b> for Odoo automates unique barcode creation
-            for every product individually or in bulk saving hours of manual work and
-            eliminating inventory errors.
-        </p>
-    </div>
+        <div
+            style="background: linear-gradient(135deg, #e6f7f8 0%, #f0fbfb 50%, #ffffff 100%); padding: 56px 24px 40px; text-align: center; position: relative;">
+            <h1
+                style="font-size: 32px; font-weight: 800; color: #2fa3a8; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 8px 0;">
+                Product Barcode Generator for Odoo</h1>
+            <span
+                style="display: block; width: 72px; height: 4px; background: linear-gradient(90deg, #2fa3a8, #7dd4d7); border-radius: 4px; margin: 14px auto 0;"></span>
+            <p style="font-size: 15px; color: #3d4f61; max-width: 740px; margin: 20px auto 0; line-height: 1.8;">
+                Struggling with manual barcode entry, duplicate codes, or untagged products?
+                <b>Techvoot's Product Barcode Generator</b> for Odoo automates unique barcode creation
+                for every product individually or in bulk saving hours of manual work and
+                eliminating inventory errors.
+            </p>
+        </div>
 
 
-    <!-- ══════════════════════════════════════════
+        <!-- ══════════════════════════════════════════
          PAIN → SOLUTION + STATS
     ══════════════════════════════════════════ -->
-    <div style="padding: 52px 0; background: #ffffff;">
-        <div class="container">
-            <div class="row justify-content-center" style="margin-bottom: 40px;">
-                <div class="col-lg-10">
-                    <div style="background: #ffffff; border-left: 5px solid #2fa3a8; border-radius: 10px; padding: 22px 28px; box-shadow: 0 4px 20px rgba(47,163,168,.10); font-size: 15px; color: #3d4f61; line-height: 1.85;">
-                        Odoo does <b style="color: #1a2332;">not auto-generate product barcodes</b> by default leaving businesses to assign
-                        them manually, risking errors and duplicates. This module fills that gap by providing a
-                        powerful, configurable barcode generation engine directly inside Odoo. Whether you manage
-                        <b>10 products or 10,000</b>, it works seamlessly for both <b style="color: #1a2332;">Community and Enterprise</b>
-                        versions, including <b style="color: #1a2332;">Odoo.sh</b>.
+        <div style="padding: 52px 0; background: #ffffff;">
+            <div class="container">
+                <div class="row justify-content-center" style="margin-bottom: 40px;">
+                    <div class="col-lg-10">
+                        <div
+                            style="background: #ffffff; border: 1px solid #d4edef; border-left: 5px solid #2fa3a8; border-radius: 10px; padding: 22px 28px; box-shadow: 0 4px 20px rgba(47,163,168,.10); font-size: 15px; color: #3d4f61; line-height: 1.85;">
+                            Odoo does <b style="color: #1a2332;">not auto-generate product barcodes</b> by default
+                            leaving businesses to assign
+                            them manually, risking errors and duplicates. This module fills that gap by providing a
+                            powerful, configurable barcode generation engine directly inside Odoo. Whether you manage
+                            <b>10 products or 10,000</b>, it works seamlessly for both <b
+                                style="color: #1a2332;">Community and Enterprise</b>
+                            versions, including <b style="color: #1a2332;">Odoo.sh</b>.
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row justify-content-center text-center">
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
-                    <div style="background: #ffffff; border-radius: 14px; padding: 24px 16px; text-align: center; box-shadow: 0 4px 18px rgba(47,163,168,.13); border-top: 4px solid #2fa3a8;">
-                        <div style="font-size: 38px; font-weight: 800; color: #2fa3a8; line-height: 1;">100%</div>
-                        <div style="font-size: 14px; color: #6b7c8e; margin-top: 6px; font-weight: 600;">Unique Barcodes Zero Duplicates</div>
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+                        <div
+                            style="background: #ffffff; border: 1px solid #d4edef; border-top: 4px solid #2fa3a8; border-radius: 14px; padding: 24px 16px; text-align: center; box-shadow: 0 4px 18px rgba(47,163,168,.13);">
+                            <div style="font-size: 38px; font-weight: 800; color: #2fa3a8; line-height: 1;">100%</div>
+                            <div style="font-size: 14px; color: #6b7c8e; margin-top: 6px; font-weight: 600;">Unique
+                                Barcodes Zero Duplicates</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
-                    <div style="background: #ffffff; border-radius: 14px; padding: 24px 16px; text-align: center; box-shadow: 0 4px 18px rgba(47,163,168,.13); border-top: 4px solid #2fa3a8;">
-                        <div style="font-size: 38px; font-weight: 800; color: #2fa3a8; line-height: 1;">Bulk</div>
-                        <div style="font-size: 14px; color: #6b7c8e; margin-top: 6px; font-weight: 600;">Generate for All Products in One Click</div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+                        <div
+                            style="background: #ffffff; border: 1px solid #d4edef; border-top: 4px solid #2fa3a8; border-radius: 14px; padding: 24px 16px; text-align: center; box-shadow: 0 4px 18px rgba(47,163,168,.13);">
+                            <div style="font-size: 38px; font-weight: 800; color: #2fa3a8; line-height: 1;">Bulk</div>
+                            <div style="font-size: 14px; color: #6b7c8e; margin-top: 6px; font-weight: 600;">Generate
+                                for All Products in One Click</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
-                    <div style="background: #ffffff; border-radius: 14px; padding: 24px 16px; text-align: center; box-shadow: 0 4px 18px rgba(47,163,168,.13); border-top: 4px solid #2fa3a8;">
-                        <div style="font-size: 38px; font-weight: 800; color: #2fa3a8; line-height: 1;">v19</div>
-                        <div style="font-size: 14px; color: #6b7c8e; margin-top: 6px; font-weight: 600;">Compatible with Latest Odoo Versions</div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+                        <div
+                            style="background: #ffffff; border: 1px solid #d4edef; border-top: 4px solid #2fa3a8; border-radius: 14px; padding: 24px 16px; text-align: center; box-shadow: 0 4px 18px rgba(47,163,168,.13);">
+                            <div style="font-size: 38px; font-weight: 800; color: #2fa3a8; line-height: 1;">v19</div>
+                            <div style="font-size: 14px; color: #6b7c8e; margin-top: 6px; font-weight: 600;">Compatible
+                                with Latest Odoo Version</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <!-- ══════════════════════════════════════════
+        <!-- ══════════════════════════════════════════
          KEY FEATURES
     ══════════════════════════════════════════ -->
-    <div style="padding: 52px 0; background: #f0fbfb;">
-        <div class="container">
-            <div class="text-center" style="margin-bottom: 40px;">
-                <h2 style="font-size: 26px; font-weight: 800; color: #2fa3a8; margin: 0 0 6px 0;">Key Features</h2>
-                <span style="display: block; width: 72px; height: 4px; background: linear-gradient(90deg, #2fa3a8, #7dd4d7); border-radius: 4px; margin: 14px auto 0;"></span>
-                <p style="font-size: 15px; color: #6b7c8e; max-width: 640px; margin: 10px auto 0; line-height: 1.7;">Everything your team needs to manage product barcodes in Odoo without third-party tools or manual spreadsheets.</p>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div style="background: #ffffff; border-radius: 12px; padding: 22px 20px; box-shadow: 0 3px 16px rgba(47,163,168,.10); border-bottom: 4px solid #2fa3a8; height: 100%; display: flex; gap: 14px; align-items: flex-start;">
-                        <div style="width: 42px; height: 42px; flex-shrink: 0; background: #e6f7f8; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #2fa3a8; font-size: 18px;">
-                            <i class="fa fa-barcode"></i>
+        <div style="padding: 52px 0; background: #f0fbfb;">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 40px;">
+                    <h2 style="font-size: 26px; font-weight: 800; color: #2fa3a8; margin: 0 0 6px 0;">Key Features</h2>
+                    <span
+                        style="display: block; width: 72px; height: 4px; background: linear-gradient(90deg, #2fa3a8, #7dd4d7); border-radius: 4px; margin: 14px auto 0;"></span>
+                    <p
+                        style="font-size: 15px; color: #6b7c8e; max-width: 640px; margin: 10px auto 0; line-height: 1.7;">
+                        Everything your team needs to manage product barcodes in Odoo without third-party tools or
+                        manual spreadsheets.</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div
+                            style="background: #ffffff; border: 1px solid #d4edef; border-bottom: 4px solid #2fa3a8; border-radius: 12px; padding: 22px 20px; box-shadow: 0 3px 16px rgba(47,163,168,.10); height: 100%; display: flex; gap: 14px; align-items: flex-start;">
+                            <div
+                                style="width: 42px; height: 42px; flex-shrink: 0; background: #e6f7f8; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #2fa3a8; font-size: 18px;">
+                                <i class="fa fa-barcode"></i>
+                            </div>
+                            <div>
+                                <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 5px;">
+                                    Auto-Generate Unique Barcodes</div>
+                                <p style="font-size: 15px; color: #6b7c8e; line-height: 1.6; margin: 0;">Instantly
+                                    assign a unique barcode to any product with one click no manual entry, no
+                                    duplicates.</p>
+                            </div>
                         </div>
-                        <div>
-                            <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 5px;">Auto-Generate Unique Barcodes</div>
-                            <p style="font-size: 15px; color: #6b7c8e; line-height: 1.6; margin: 0;">Instantly assign a unique barcode to any product with one click no manual entry, no duplicates.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div
+                            style="background: #ffffff; border: 1px solid #d4edef; border-bottom: 4px solid #2fa3a8; border-radius: 12px; padding: 22px 20px; box-shadow: 0 3px 16px rgba(47,163,168,.10); height: 100%; display: flex; gap: 14px; align-items: flex-start;">
+                            <div
+                                style="width: 42px; height: 42px; flex-shrink: 0; background: #e6f7f8; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #2fa3a8; font-size: 18px;">
+                                <i class="fa fa-sliders"></i>
+                            </div>
+                            <div>
+                                <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 5px;">
+                                    Configurable Formats & Sequences</div>
+                                <p style="font-size: 15px; color: #6b7c8e; line-height: 1.6; margin: 0;">Set prefix
+                                    rules, sequence patterns, and barcode format (Code128, EAN13, etc.) to match your
+                                    workflow.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div
+                            style="background: #ffffff; border: 1px solid #d4edef; border-bottom: 4px solid #2fa3a8; border-radius: 12px; padding: 22px 20px; box-shadow: 0 3px 16px rgba(47,163,168,.10); height: 100%; display: flex; gap: 14px; align-items: flex-start;">
+                            <div
+                                style="width: 42px; height: 42px; flex-shrink: 0; background: #e6f7f8; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #2fa3a8; font-size: 18px;">
+                                <i class="fa fa-th-list"></i>
+                            </div>
+                            <div>
+                                <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 5px;">Bulk
+                                    Barcode Generation</div>
+                                <p style="font-size: 15px; color: #6b7c8e; line-height: 1.6; margin: 0;">Select hundreds
+                                    of products at once and generate or update all their barcodes in a single action.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div
+                            style="background: #ffffff; border: 1px solid #d4edef; border-bottom: 4px solid #2fa3a8; border-radius: 12px; padding: 22px 20px; box-shadow: 0 3px 16px rgba(47,163,168,.10); height: 100%; display: flex; gap: 14px; align-items: flex-start;">
+                            <div
+                                style="width: 42px; height: 42px; flex-shrink: 0; background: #e6f7f8; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #2fa3a8; font-size: 18px;">
+                                <i class="fa fa-picture-o"></i>
+                            </div>
+                            <div>
+                                <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 5px;">
+                                    Barcode Image Preview & Generation</div>
+                                <p style="font-size: 15px; color: #6b7c8e; line-height: 1.6; margin: 0;">View the
+                                    rendered barcode image directly on the product form ready for printing and scanning.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div
+                            style="background: #ffffff; border: 1px solid #d4edef; border-bottom: 4px solid #2fa3a8; border-radius: 12px; padding: 22px 20px; box-shadow: 0 3px 16px rgba(47,163,168,.10); height: 100%; display: flex; gap: 14px; align-items: flex-start;">
+                            <div
+                                style="width: 42px; height: 42px; flex-shrink: 0; background: #e6f7f8; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #2fa3a8; font-size: 18px;">
+                                <i class="fa fa-shield"></i>
+                            </div>
+                            <div>
+                                <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 5px;">
+                                    Role-Based Access Control</div>
+                                <p style="font-size: 15px; color: #6b7c8e; line-height: 1.6; margin: 0;">Grant barcode
+                                    generation rights only to authorized users keeping your product data secure.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div
+                            style="background: #ffffff; border: 1px solid #d4edef; border-bottom: 4px solid #2fa3a8; border-radius: 12px; padding: 22px 20px; box-shadow: 0 3px 16px rgba(47,163,168,.10); height: 100%; display: flex; gap: 14px; align-items: flex-start;">
+                            <div
+                                style="width: 42px; height: 42px; flex-shrink: 0; background: #e6f7f8; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #2fa3a8; font-size: 18px;">
+                                <i class="fa fa-refresh"></i>
+                            </div>
+                            <div>
+                                <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 5px;">
+                                    Replace or Retain Existing Barcodes</div>
+                                <p style="font-size: 15px; color: #6b7c8e; line-height: 1.6; margin: 0;">Use the wizard
+                                    to decide whether bulk generation should overwrite existing codes full control, no
+                                    accidents.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div style="background: #ffffff; border-radius: 12px; padding: 22px 20px; box-shadow: 0 3px 16px rgba(47,163,168,.10); border-bottom: 4px solid #2fa3a8; height: 100%; display: flex; gap: 14px; align-items: flex-start;">
-                        <div style="width: 42px; height: 42px; flex-shrink: 0; background: #e6f7f8; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #2fa3a8; font-size: 18px;">
-                            <i class="fa fa-sliders"></i>
-                        </div>
-                        <div>
-                            <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 5px;">Configurable Formats & Sequences</div>
-                            <p style="font-size: 15px; color: #6b7c8e; line-height: 1.6; margin: 0;">Set prefix rules, sequence patterns, and barcode format (Code128, EAN13, etc.) to match your workflow.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div style="background: #ffffff; border-radius: 12px; padding: 22px 20px; box-shadow: 0 3px 16px rgba(47,163,168,.10); border-bottom: 4px solid #2fa3a8; height: 100%; display: flex; gap: 14px; align-items: flex-start;">
-                        <div style="width: 42px; height: 42px; flex-shrink: 0; background: #e6f7f8; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #2fa3a8; font-size: 18px;">
-                            <i class="fa fa-th-list"></i>
-                        </div>
-                        <div>
-                            <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 5px;">Bulk Barcode Generation</div>
-                            <p style="font-size: 15px; color: #6b7c8e; line-height: 1.6; margin: 0;">Select hundreds of products at once and generate or update all their barcodes in a single action.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div style="background: #ffffff; border-radius: 12px; padding: 22px 20px; box-shadow: 0 3px 16px rgba(47,163,168,.10); border-bottom: 4px solid #2fa3a8; height: 100%; display: flex; gap: 14px; align-items: flex-start;">
-                        <div style="width: 42px; height: 42px; flex-shrink: 0; background: #e6f7f8; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #2fa3a8; font-size: 18px;">
-                            <i class="fa fa-picture-o"></i>
-                        </div>
-                        <div>
-                            <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 5px;">Barcode Image Preview & Generation</div>
-                            <p style="font-size: 15px; color: #6b7c8e; line-height: 1.6; margin: 0;">View the rendered barcode image directly on the product form ready for printing and scanning.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div style="background: #ffffff; border-radius: 12px; padding: 22px 20px; box-shadow: 0 3px 16px rgba(47,163,168,.10); border-bottom: 4px solid #2fa3a8; height: 100%; display: flex; gap: 14px; align-items: flex-start;">
-                        <div style="width: 42px; height: 42px; flex-shrink: 0; background: #e6f7f8; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #2fa3a8; font-size: 18px;">
-                            <i class="fa fa-shield"></i>
-                        </div>
-                        <div>
-                            <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 5px;">Role-Based Access Control</div>
-                            <p style="font-size: 15px; color: #6b7c8e; line-height: 1.6; margin: 0;">Grant barcode generation rights only to authorized users keeping your product data secure.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div style="background: #ffffff; border-radius: 12px; padding: 22px 20px; box-shadow: 0 3px 16px rgba(47,163,168,.10); border-bottom: 4px solid #2fa3a8; height: 100%; display: flex; gap: 14px; align-items: flex-start;">
-                        <div style="width: 42px; height: 42px; flex-shrink: 0; background: #e6f7f8; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #2fa3a8; font-size: 18px;">
-                            <i class="fa fa-refresh"></i>
-                        </div>
-                        <div>
-                            <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 5px;">Replace or Retain Existing Barcodes</div>
-                            <p style="font-size: 15px; color: #6b7c8e; line-height: 1.6; margin: 0;">Use the wizard to decide whether bulk generation should overwrite existing codes full control, no accidents.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Why choose block -->
-            <div class="row justify-content-center" style="margin-top: 20px;">
-                <div class="col-lg-10">
-                    <div style="background: #ffffff; border-radius: 14px; padding: 32px 36px; box-shadow: 0 4px 22px rgba(0,0,0,.06);">
-                        <h3 style="font-size: 20px; font-weight: 800; color: #2fa3a8; margin-top: 0; margin-bottom: 14px;"><i class="fa fa-star" style="margin-right: 8px;"></i>Why Businesses Choose This Odoo Barcode Module</h3>
-                        <p style="font-size: 15px; color: #3d4f61; line-height: 1.85; margin-bottom: 14px;">Manually creating barcodes for hundreds of products is time-consuming and error-prone.
-                            <b>Techvoot's Product Barcode Generator</b> is built specifically for Odoo users who need a
-                            reliable, scalable, and easy-to-use barcode automation solution. It integrates natively with
-                            Odoo's inventory, product catalog, and point-of-sale modules so there's no duplicate data
-                            entry and no third-party barcode tools to manage.</p>
-                        <p style="font-size: 15px; color: #3d4f61; line-height: 1.85; margin-bottom: 0;">Compatible with <b>Odoo Community, Enterprise, and Odoo.sh</b>, the module supports multiple
-                            barcode formats including <b style="color: #1a2332;">Code128, EAN13, EAN8, Code39</b>, and more. Whether you're
-                            onboarding a new product catalog or standardizing barcodes across an existing inventory, this
-                            module makes the entire process fast, accurate, and fully automated. Trusted by businesses
-                            across retail, manufacturing, and warehousing.</p>
+                <!-- Why choose block -->
+                <div class="row justify-content-center" style="margin-top: 20px;">
+                    <div class="col-lg-10">
+                        <div
+                            style="background: #ffffff; border: 1px solid #d4edef; border-radius: 14px; padding: 32px 36px; box-shadow: 0 4px 22px rgba(0,0,0,.06);">
+                            <h3
+                                style="font-size: 20px; font-weight: 800; color: #2fa3a8; margin-top: 0; margin-bottom: 14px;">
+                                <i class="fa fa-star" style="margin-right: 8px;"></i>Why Businesses Choose This Odoo
+                                Barcode Module
+                            </h3>
+                            <p style="font-size: 15px; color: #3d4f61; line-height: 1.85; margin-bottom: 14px;">Manually
+                                creating barcodes for hundreds of products is time-consuming and error-prone.
+                                <b>Techvoot's Product Barcode Generator</b> is built specifically for Odoo users who
+                                need a
+                                reliable, scalable, and easy-to-use barcode automation solution. It integrates natively
+                                with
+                                Odoo's inventory, product catalog, and point-of-sale modules so there's no duplicate
+                                data
+                                entry and no third-party barcode tools to manage.
+                            </p>
+                            <p style="font-size: 15px; color: #3d4f61; line-height: 1.85; margin-bottom: 0;">Compatible
+                                with <b>Odoo Community, Enterprise, and Odoo.sh</b>, the module supports multiple
+                                barcode formats including <b style="color: #1a2332;">Code128, EAN13, EAN8, Code39</b>,
+                                and more. Whether you're
+                                onboarding a new product catalog or standardizing barcodes across an existing inventory,
+                                this
+                                module makes the entire process fast, accurate, and fully automated. Trusted by
+                                businesses
+                                across retail, manufacturing, and warehousing.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <!-- ══════════════════════════════════════════
+        <!-- ══════════════════════════════════════════
          TABS
     ══════════════════════════════════════════ -->
-    <div style="padding: 52px 0; background: #ffffff;">
-        <div class="container">
-            <!-- Tab Nav -->
-            <div style="background: #ffffff; border-radius: 16px 16px 0 0; padding: 8px 12px 0; box-shadow: 0 -2px 16px rgba(47,163,168,.07); display: flex; flex-wrap: wrap; justify-content: center; border-bottom: 3px solid #e6f7f8;">
-                <ul class="nav nav-pills justify-content-center" role="tablist" style="border-bottom: none; display: flex; flex-wrap: wrap; justify-content: center; width: 100%; gap: 6px; margin: 0; padding: 0; list-style: none;">
-                    <li style="margin: 0;">
-                        <a class="nav-link active" data-toggle="tab" data-bs-toggle="tab" href="#tab-docs" role="tab" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; padding: 11px 22px; border-radius: 10px 10px 0 0; cursor: pointer; text-decoration: none; display: block; border: none; text-align: center;">
-                            <i class="fa fa-book" style="margin-right: 5px;"></i> Documentation
-                        </a>
-                    </li>
-                    <li style="margin: 0;">
-                        <a class="nav-link" data-toggle="tab" data-bs-toggle="tab" href="#tab-release" role="tab" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; padding: 11px 22px; border-radius: 10px 10px 0 0; cursor: pointer; text-decoration: none; display: block; border: none; text-align: center;">
-                            <i class="fa fa-tag" style="margin-right: 5px;"></i> Releases
-                        </a>
-                    </li>
-                    <li style="margin: 0;">
-                        <a class="nav-link" data-toggle="tab" data-bs-toggle="tab" href="#tab-faq" role="tab" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; padding: 11px 22px; border-radius: 10px 10px 0 0; cursor: pointer; text-decoration: none; display: block; border: none; text-align: center;">
-                            <i class="fa fa-question-circle" style="margin-right: 5px;"></i> FAQs
-                        </a>
-                    </li>
-                    <li style="margin: 0;">
-                        <a class="nav-link" data-toggle="tab" data-bs-toggle="tab" href="#tab-support" role="tab" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; padding: 11px 22px; border-radius: 10px 10px 0 0; cursor: pointer; text-decoration: none; display: block; border: none; text-align: center;">
-                            <i class="fa fa-life-ring" style="margin-right: 5px;"></i> Support
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Tab Content -->
-            <div class="tab-content" style="background: #ffffff; border-radius: 0 0 16px 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.06); padding: 36px 28px; border: 1px solid #d4edef; border-top: none;">
-
-                <!-- ── DOCUMENTATION ── -->
-                <div id="tab-docs" class="tab-pane active show" role="tabpanel">
-                    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
-                        <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
-                            <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
-                                <li>Enable the Barcode Generator option from Settings to activate automatic barcode generation.</li>
-                            </ul>
-                        </div>
-                        <img src="s01.png" alt="Enable Barcode Generator in Settings" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
-                    </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
-                        <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
-                            <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
-                                <li>Assign barcode generation access rights to authorized users for managing product barcodes.</li>
-                            </ul>
-                        </div>
-                        <img src="s02.png" alt="Assign User Access Rights" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
-                    </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
-                        <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
-                            <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
-                                <li>Open a product without a barcode and click the Generate Barcode button to create a unique barcode.</li>
-                            </ul>
-                        </div>
-                        <img src="s03.png" alt="Generate Barcode Button" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
-                    </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
-                        <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
-                            <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
-                                <li>A unique barcode is automatically generated and assigned to the selected product.</li>
-                            </ul>
-                        </div>
-                        <img src="s04.png" alt="Unique Barcode Generated" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
-                    </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
-                        <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
-                            <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
-                                <li>Generate barcodes for multiple products simultaneously using the bulk action feature.</li>
-                            </ul>
-                        </div>
-                        <img src="s05..png" alt="Bulk Barcode Generation" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
-                    </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
-                        <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
-                            <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
-                                <li>Use the barcode generation wizard to choose whether existing barcodes should be replaced.</li>
-                            </ul>
-                        </div>
-                        <img src="s06.png" alt="Barcode Replacement Wizard" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
-                    </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
-                        <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
-                            <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
-                                <li>Generate and preview barcode images directly from the product record.</li>
-                            </ul>
-                        </div>
-                        <img src="s07.png" alt="Barcode Image Preview" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
-                    </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
-                        <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
-                            <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
-                                <li>Enter a barcode number manually and generate the corresponding barcode image.</li>
-                            </ul>
-                        </div>
-                        <img src="s08.png" alt="Manual Barcode Entry" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
-                    </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
-                        <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
-                            <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
-                                <li>Verify rendered barcode details directly on the product's general tab.</li>
-                            </ul>
-                        </div>
-                        <img src="s09.png" alt="Verify Barcode Details" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
-                    </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
-                        <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
-                            <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
-                                <li>Select multiple products and use the Generate Barcode Image action to create barcode images in bulk.</li>
-                            </ul>
-                        </div>
-                        <img src="s10.png" alt="Generate Barcode Image in Bulk" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
-                    </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
-                        <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
-                            <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
-                                <li>Review generated barcodes and images for accurate product identification and inventory management.</li>
-                            </ul>
-                        </div>
-                        <img src="s11.png" alt="Review Barcodes and Images" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
-                    </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 10px;">
-                        <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
-                            <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
-                                <li>Confirm bulk-rendered barcode images are stored correctly.</li>
-                            </ul>
-                        </div>
-                        <img src="s12.png" alt="Confirm Bulk Barcode Image Storage" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
-                    </div>
+        <div style="padding: 52px 0; background: #ffffff;">
+            <div class="container">
+                <!-- Tab Nav -->
+                <div
+                    style="background: #ffffff; border-radius: 16px 16px 0 0; padding: 8px 12px 0; box-shadow: 0 -2px 16px rgba(47,163,168,.07); display: flex; flex-wrap: wrap; justify-content: center; border-bottom: 3px solid #e6f7f8;">
+                    <ul class="nav nav-pills justify-content-center" role="tablist"
+                        style="border-bottom: none; display: flex; flex-wrap: wrap; justify-content: center; width: 100%; gap: 6px; margin: 0; padding: 0; list-style: none;">
+                        <li style="margin: 0;">
+                            <a class="nav-link active" data-toggle="tab" data-bs-toggle="tab" href="#tab-docs"
+                                role="tab"
+                                style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; padding: 11px 22px; border-radius: 10px 10px 0 0; cursor: pointer; text-decoration: none; display: block; border: none; text-align: center;">
+                                <i class="fa fa-book" style="margin-right: 5px;"></i> Documentation
+                            </a>
+                        </li>
+                        <li style="margin: 0;">
+                            <a class="nav-link" data-toggle="tab" data-bs-toggle="tab" href="#tab-release" role="tab"
+                                style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; padding: 11px 22px; border-radius: 10px 10px 0 0; cursor: pointer; text-decoration: none; display: block; border: none; text-align: center;">
+                                <i class="fa fa-tag" style="margin-right: 5px;"></i> Releases
+                            </a>
+                        </li>
+                        <li style="margin: 0;">
+                            <a class="nav-link" data-toggle="tab" data-bs-toggle="tab" href="#tab-faq" role="tab"
+                                style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; padding: 11px 22px; border-radius: 10px 10px 0 0; cursor: pointer; text-decoration: none; display: block; border: none; text-align: center;">
+                                <i class="fa fa-question-circle" style="margin-right: 5px;"></i> FAQs
+                            </a>
+                        </li>
+                        <li style="margin: 0;">
+                            <a class="nav-link" data-toggle="tab" data-bs-toggle="tab" href="#tab-support" role="tab"
+                                style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; padding: 11px 22px; border-radius: 10px 10px 0 0; cursor: pointer; text-decoration: none; display: block; border: none; text-align: center;">
+                                <i class="fa fa-life-ring" style="margin-right: 5px;"></i> Support
+                            </a>
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- ── RELEASES ── -->
-                <div id="tab-release" class="tab-pane fade" role="tabpanel" style="padding: 10px 0;">
-                    <div style="background: #f0fbfb; border-left: 5px solid #2fa3a8; border-radius: 10px; padding: 20px 24px;">
-                        <div style="font-size: 15px; font-weight: 700; color: #1a2332; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-                            <i class="fa fa-code-fork" style="color: #2fa3a8; font-size: 18px; margin-right: 8px;"></i>
-                            <span>Version 19.0.1.0</span>
-                            <span style="color: #aaa; margin: 0 5px;">|</span>
-                            <span style="color: #2fa3a8;">Released on: 04<sup>th</sup> June 2026</span>
+                <!-- Tab Content -->
+                <div class="tab-content"
+                    style="background: #ffffff; border-radius: 0 0 16px 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.06); padding: 36px 28px; border: 1px solid #d4edef; border-top: none;">
+                    <div id="tab-docs" class="tab-pane active show" role="tabpanel">
+                        <!-- Step 1 -->
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
+                            <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
+                                <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
+                                    <li>Enable the Barcode Generator option from Settings to activate automatic barcode generation.</li>
+                                </ul>
+                            </div>
+                            <img src="s02.png" alt="Enable Barcode Generator in Settings" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
                         </div>
-                        <div style="padding-top: 14px; display: flex; align-items: center; gap: 10px;">
-                            <span style="background: #2fa3a8; color: #ffffff; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 4px; margin-right: 10px;">Initial</span>
-                            <span style="font-size: 15px; color: #3d4f61;">Initial Release.</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- ── FAQs ── -->
-                <div id="tab-faq" class="tab-pane fade" role="tabpanel" style="padding: 10px 0;">
-                    <div style="background: #f0fbfb; border-radius: 10px; margin-bottom: 12px; overflow: hidden; border: 1px solid #d4edef; padding: 16px 20px;">
-                        <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 8px; display: flex; align-items: center;">
-                            <i class="fa fa-chevron-right" style="color: #2fa3a8; font-size: 16px; margin-right: 10px;"></i>
-                            Is This App Compatible With Odoo Community?
+                        <!-- Step 2 -->
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
+                            <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
+                                <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
+                                    <li>Assign barcode generation access rights to authorized users for managing product barcodes.</li>
+                                </ul>
+                            </div>
+                            <img src="s01.png" alt="Assign User Access Rights" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
                         </div>
-                        <div style="padding-left: 26px; font-size: 15px; color: #3d4f61; line-height: 1.7;">
-                            Yes, this app works perfectly with Odoo Community.
-                        </div>
-                    </div>
-                    <div style="background: #f0fbfb; border-radius: 10px; margin-bottom: 12px; overflow: hidden; border: 1px solid #d4edef; padding: 16px 20px;">
-                        <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 8px; display: flex; align-items: center;">
-                            <i class="fa fa-chevron-right" style="color: #2fa3a8; font-size: 16px; margin-right: 10px;"></i>
-                            Is This App Compatible With Odoo Enterprise?
-                        </div>
-                        <div style="padding-left: 26px; font-size: 15px; color: #3d4f61; line-height: 1.7;">
-                            Yes, this app works perfectly with Odoo Enterprise.
-                        </div>
-                    </div>
-                    <div style="background: #f0fbfb; border-radius: 10px; margin-bottom: 12px; overflow: hidden; border: 1px solid #d4edef; padding: 16px 20px;">
-                        <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 8px; display: flex; align-items: center;">
-                            <i class="fa fa-chevron-right" style="color: #2fa3a8; font-size: 16px; margin-right: 10px;"></i>
-                            How Do I Generate A Barcode For A Product?
-                        </div>
-                        <div style="padding-left: 26px; font-size: 15px; color: #3d4f61; line-height: 1.7;">
-                            Open the product form and click the 'Generate Barcode' button to automatically create a unique barcode.
-                        </div>
-                    </div>
-                    <div style="background: #f0fbfb; border-radius: 10px; margin-bottom: 12px; overflow: hidden; border: 1px solid #d4edef; padding: 16px 20px;">
-                        <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 8px; display: flex; align-items: center;">
-                            <i class="fa fa-chevron-right" style="color: #2fa3a8; font-size: 16px; margin-right: 10px;"></i>
-                            Can I Generate Barcodes For Multiple Products At Once?
-                        </div>
-                        <div style="padding-left: 26px; font-size: 15px; color: #3d4f61; line-height: 1.7;">
-                            Yes, you can select multiple products and generate barcodes in bulk using the available multi-action option.
-                        </div>
-                    </div>
-                    <div style="background: #f0fbfb; border-radius: 10px; margin-bottom: 12px; overflow: hidden; border: 1px solid #d4edef; padding: 16px 20px;">
-                        <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 8px; display: flex; align-items: center;">
-                            <i class="fa fa-chevron-right" style="color: #2fa3a8; font-size: 16px; margin-right: 10px;"></i>
-                            Can Existing Barcodes Be Replaced?
-                        </div>
-                        <div style="padding-left: 26px; font-size: 15px; color: #3d4f61; line-height: 1.7;">
-                            Yes, the barcode generation wizard allows you to replace existing barcodes when required.
-                        </div>
-                    </div>
-                    <div style="background: #f0fbfb; border-radius: 10px; margin-bottom: 12px; overflow: hidden; border: 1px solid #d4edef; padding: 16px 20px;">
-                        <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 8px; display: flex; align-items: center;">
-                            <i class="fa fa-chevron-right" style="color: #2fa3a8; font-size: 16px; margin-right: 10px;"></i>
-                            Does The Module Generate Barcode Images?
-                        </div>
-                        <div style="padding-left: 26px; font-size: 15px; color: #3d4f61; line-height: 1.7;">
-                            Yes, the module can generate barcode images for products and supports easy barcode management.
-                        </div>
-                    </div>
-                    <div style="background: #f0fbfb; border-radius: 10px; margin-bottom: 12px; overflow: hidden; border: 1px solid #d4edef; padding: 16px 20px;">
-                        <div style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 8px; display: flex; align-items: center;">
-                            <i class="fa fa-chevron-right" style="color: #2fa3a8; font-size: 16px; margin-right: 10px;"></i>
-                            I Want Some Customization In This App. How Can I Request It?
-                        </div>
-                        <div style="padding-left: 26px; font-size: 15px; color: #3d4f61; line-height: 1.7;">
-                            Please contact us at <a href="mailto:hello@techvoot.com" style="color: #2fa3a8; font-weight: 600; text-decoration: none;">hello@techvoot.com</a> to request customization.
-                        </div>
-                    </div>
-                </div>
 
-                <!-- ── SUPPORT ── -->
-                <div id="tab-support" class="tab-pane fade" role="tabpanel" style="padding: 10px 0;">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-6 col-md-8">
-                            <div style="background: linear-gradient(135deg, #e6f7f8 0%, #ffffff 100%) !important; border: 2px solid #2fa3a8 !important; border-radius: 16px !important; padding: 36px 28px !important; text-align: center !important; box-shadow: 0 6px 20px rgba(47,163,168,.08);">
-                                <div style="font-size: 48px !important; color: #2fa3a8 !important; margin-bottom: 16px !important;"><i class="fa fa-envelope-open-o"></i></div>
-                                <h4 style="font-size: 20px !important; font-weight: 800 !important; color: #1a2332 !important; margin-bottom: 8px !important; margin-top: 0;">Need Help? We're Here!</h4>
-                                <p style="font-size: 15px !important; color: #6b7c8e !important; margin-bottom: 20px !important; line-height: 1.6;">Reach out to our team for any technical support, installation help, or customization requests. We typically respond within 24 hours.</p>
-                                <a href="mailto:hello@techvoot.com" style="display: inline-flex !important; align-items: center !important; gap: 8px !important; background: #2fa3a8 !important; color: #ffffff !important; font-size: 15px !important; font-weight: 700 !important; padding: 12px 28px !important; border-radius: 30px !important; text-decoration: none !important; box-shadow: 0 4px 16px rgba(47,163,168,.35) !important;">
-                                    <i class="fa fa-envelope" style="margin-right: 5px;"></i> hello@techvoot.com
-                                </a>
+                        <!-- Step 3 -->
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
+                            <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
+                                <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
+                                    <li>Open a product without a barcode and click the Generate Barcode button to create a unique barcode.</li>
+                                </ul>
+                            </div>
+                            <img src="s03.png" alt="Generate Barcode Button" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
+                            <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
+                                <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
+                                    <li>A unique barcode is automatically generated and assigned to the selected product.</li>
+                                </ul>
+                            </div>
+                            <img src="s04.png" alt="Unique Barcode Generated" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
+                        </div>
+
+                        <!-- Step 5 -->
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
+                            <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
+                                <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
+                                    <li>Generate barcodes for multiple products simultaneously using the bulk action feature.</li>
+                                </ul>
+                            </div>
+                            <img src="s05..png" alt="Bulk Barcode Generation" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
+                        </div>
+
+                        <!-- Step 6 -->
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
+                            <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
+                                <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
+                                    <li>Use the barcode generation wizard to choose whether existing barcodes should be replaced.</li>
+                                </ul>
+                            </div>
+                            <img src="s06.png" alt="Barcode Replacement Wizard" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
+                        </div>
+
+                        <!-- Step 7 -->
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
+                            <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
+                                <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
+                                    <li>Generate and preview barcode images directly from the product record.</li>
+                                </ul>
+                            </div>
+                            <img src="s07.png" alt="Barcode Image Preview" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
+                        </div>
+
+                        <!-- Step 8 -->
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
+                            <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">http://localhost:8080/odoo/apps/ir.module.module/582
+                                <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
+                                    <li>Enter a barcode number manually and generate the corresponding barcode image.</li>
+                                </ul>
+                            </div>
+                            <img src="s08.png" alt="Manual Barcode Entry" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
+                        </div>
+
+                        <!-- Step 9 -->
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
+                            <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
+                                <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
+                                    <li>Verify rendered barcode details directly on the product's general tab.</li>
+                                </ul>
+                            </div>
+                            <img src="s09.png" alt="Verify Barcode Details" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
+                        </div>
+
+                        <!-- Step 10 -->
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
+                            <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
+                                <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
+                                    <li>Select multiple products and use the Generate Barcode Image action to create barcode images in bulk.</li>
+                                </ul>
+                            </div>
+                            <img src="s10.png" alt="Generate Barcode Image in Bulk" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
+                        </div>
+
+                        <!-- Step 11 -->
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
+                            <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
+                                <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
+                                    <li>Review generated barcodes and images for accurate product identification and inventory management.</li>
+                                </ul>
+                            </div>
+                            <img src="s11.png" alt="Review Barcodes and Images" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
+                        </div>
+
+                        <!-- Step 12 -->
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 10px;">
+                            <div style="width: 100%; max-width: 90%; text-align: left; margin-bottom: 16px;">
+                                <ul style="list-style-type: disc; padding-left: 20px; margin: 0; color: #1b325f; font-size: 15px; font-weight: 500; line-height: 1.7;">
+                                    <li>Confirm bulk-rendered barcode images are stored correctly.</li>
+                                </ul>
+                            </div>
+                            <img src="s12.png" alt="Confirm Bulk Barcode Image Storage" style="width: 100%; max-width: 90%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
+                        </div>
+                    </div>
+
+                    <!-- ── RELEASES ── -->
+                    <div id="tab-release" class="tab-pane fade" role="tabpanel" style="padding: 10px 0;">
+                        <div
+                            style="background: #f0fbfb; border-left: 5px solid #2fa3a8; border-radius: 10px; padding: 20px 24px;">
+                            <div
+                                style="font-size: 15px; font-weight: 700; color: #1a2332; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                                <i class="fa fa-code-fork"
+                                    style="color: #2fa3a8; font-size: 18px; margin-right: 8px;"></i>
+                                <span>Version 19.0.1.0</span>
+                                <span style="color: #aaa; margin: 0 5px;">|</span>
+                                <span style="color: #2fa3a8;">Released on: 04<sup>th</sup> June 2026</span>
+                            </div>
+                            <div style="padding-top: 14px; display: flex; align-items: center; gap: 10px;">
+                                <span
+                                    style="background: #2fa3a8; color: #ffffff; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 4px; margin-right: 10px;">Initial</span>
+                                <span style="font-size: 15px; color: #3d4f61;">Initial Release.</span>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div><!-- end tab-content-wrap -->
+                    <!-- ── FAQs ── -->
+                    <div id="tab-faq" class="tab-pane fade" role="tabpanel" style="padding: 10px 0;">
+                        <div
+                            style="background: #f0fbfb; border-radius: 10px; margin-bottom: 12px; overflow: hidden; border: 1px solid #d4edef; padding: 16px 20px;">
+                            <div
+                                style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 8px; display: flex; align-items: center;">
+                                <i class="fa fa-chevron-right"
+                                    style="color: #2fa3a8; font-size: 16px; margin-right: 10px;"></i>
+                                Is This App Compatible With Odoo Community?
+                            </div>
+                            <div style="padding-left: 26px; font-size: 15px; color: #3d4f61; line-height: 1.7;">
+                                Yes, this app works perfectly with Odoo Community.
+                            </div>
+                        </div>
+                        <div
+                            style="background: #f0fbfb; border-radius: 10px; margin-bottom: 12px; overflow: hidden; border: 1px solid #d4edef; padding: 16px 20px;">
+                            <div
+                                style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 8px; display: flex; align-items: center;">
+                                <i class="fa fa-chevron-right"
+                                    style="color: #2fa3a8; font-size: 16px; margin-right: 10px;"></i>
+                                Is This App Compatible With Odoo Enterprise?
+                            </div>
+                            <div style="padding-left: 26px; font-size: 15px; color: #3d4f61; line-height: 1.7;">
+                                Yes, this app works perfectly with Odoo Enterprise.
+                            </div>
+                        </div>
+                        <div
+                            style="background: #f0fbfb; border-radius: 10px; margin-bottom: 12px; overflow: hidden; border: 1px solid #d4edef; padding: 16px 20px;">
+                            <div
+                                style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 8px; display: flex; align-items: center;">
+                                <i class="fa fa-chevron-right"
+                                    style="color: #2fa3a8; font-size: 16px; margin-right: 10px;"></i>
+                                How Do I Generate A Barcode For A Product?
+                            </div>
+                            <div style="padding-left: 26px; font-size: 15px; color: #3d4f61; line-height: 1.7;">
+                                Open the product form and click the 'Generate Barcode' button to automatically create a
+                                unique barcode.
+                            </div>
+                        </div>
+                        <div
+                            style="background: #f0fbfb; border-radius: 10px; margin-bottom: 12px; overflow: hidden; border: 1px solid #d4edef; padding: 16px 20px;">
+                            <div
+                                style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 8px; display: flex; align-items: center;">
+                                <i class="fa fa-chevron-right"
+                                    style="color: #2fa3a8; font-size: 16px; margin-right: 10px;"></i>
+                                Can I Generate Barcodes For Multiple Products At Once?
+                            </div>
+                            <div style="padding-left: 26px; font-size: 15px; color: #3d4f61; line-height: 1.7;">
+                                Yes, you can select multiple products and generate barcodes in bulk using the available
+                                multi-action option.
+                            </div>
+                        </div>
+                        <div
+                            style="background: #f0fbfb; border-radius: 10px; margin-bottom: 12px; overflow: hidden; border: 1px solid #d4edef; padding: 16px 20px;">
+                            <div
+                                style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 8px; display: flex; align-items: center;">
+                                <i class="fa fa-chevron-right"
+                                    style="color: #2fa3a8; font-size: 16px; margin-right: 10px;"></i>
+                                Can Existing Barcodes Be Replaced?
+                            </div>
+                            <div style="padding-left: 26px; font-size: 15px; color: #3d4f61; line-height: 1.7;">
+                                Yes, the barcode generation wizard allows you to replace existing barcodes when
+                                required.
+                            </div>
+                        </div>
+                        <div
+                            style="background: #f0fbfb; border-radius: 10px; margin-bottom: 12px; overflow: hidden; border: 1px solid #d4edef; padding: 16px 20px;">
+                            <div
+                                style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 8px; display: flex; align-items: center;">
+                                <i class="fa fa-chevron-right"
+                                    style="color: #2fa3a8; font-size: 16px; margin-right: 10px;"></i>
+                                Does The Module Generate Barcode Images?
+                            </div>
+                            <div style="padding-left: 26px; font-size: 15px; color: #3d4f61; line-height: 1.7;">
+                                Yes, the module can generate barcode images for products and supports easy barcode
+                                management.
+                            </div>
+                        </div>
+                        <div
+                            style="background: #f0fbfb; border-radius: 10px; margin-bottom: 12px; overflow: hidden; border: 1px solid #d4edef; padding: 16px 20px;">
+                            <div
+                                style="font-size: 15px; font-weight: 700; color: #1a2332; margin-bottom: 8px; display: flex; align-items: center;">
+                                <i class="fa fa-chevron-right"
+                                    style="color: #2fa3a8; font-size: 16px; margin-right: 10px;"></i>
+                                I Want Some Customization In This App. How Can I Request It?
+                            </div>
+                            <div style="padding-left: 26px; font-size: 15px; color: #3d4f61; line-height: 1.7;">
+                                Please contact us at <a href="mailto:hello@techvoot.com"
+                                    style="color: #2fa3a8; font-weight: 600; text-decoration: none;">hello@techvoot.com</a>
+                                to request customization.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ── SUPPORT ── -->
+                    <div id="tab-support" class="tab-pane fade" role="tabpanel" style="padding: 10px 0;">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 col-md-8">
+                                <div
+                                    style="background: linear-gradient(135deg, #e6f7f8 0%, #ffffff 100%) !important; border: 2px solid #2fa3a8 !important; border-radius: 16px !important; padding: 36px 28px !important; text-align: center !important; box-shadow: 0 6px 20px rgba(47,163,168,.08);">
+                                    <div
+                                        style="font-size: 48px !important; color: #2fa3a8 !important; margin-bottom: 16px !important;">
+                                        <i class="fa fa-envelope-open-o"></i>
+                                    </div>
+                                    <h4
+                                        style="font-size: 20px !important; font-weight: 800 !important; color: #1a2332 !important; margin-bottom: 8px !important; margin-top: 0;">
+                                        Need Help? We're Here!</h4>
+                                    <p
+                                        style="font-size: 15px !important; color: #6b7c8e !important; margin-bottom: 20px !important; line-height: 1.6;">
+                                        Reach out to our team for any technical support, installation help, or
+                                        customization requests. We typically respond within 24 hours.</p>
+                                    <a href="mailto:hello@techvoot.com"
+                                        style="display: inline-flex !important; align-items: center !important; gap: 8px !important; background: #2fa3a8 !important; color: #ffffff !important; font-size: 15px !important; font-weight: 700 !important; padding: 12px 28px !important; border-radius: 30px !important; text-decoration: none !important; box-shadow: 0 4px 16px rgba(47,163,168,.35) !important;">
+                                        <i class="fa fa-envelope" style="margin-right: 5px;"></i> hello@techvoot.com
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- end tab-content-wrap -->
+
+
+            </div>
         </div>
-    </div>
 
 
-    <!-- ══════════════════════════════════════════
+        <!-- ══════════════════════════════════════════
          OUR SERVICES
     ══════════════════════════════════════════ -->
-    <div style="padding: 52px 0; background: #f0fbfb;">
-        <div class="container">
-            <div class="text-center" style="margin-bottom: 40px;">
-                <h2 style="font-size: 26px; font-weight: 800; color: #2fa3a8; margin: 0 0 6px 0;">Our Services</h2>
-                <span style="display: block; width: 72px; height: 4px; background: linear-gradient(90deg, #2fa3a8, #7dd4d7); border-radius: 4px; margin: 14px auto 0;"></span>
+        <section class="md_services" style="padding: 50px 0px;background-color: transparent;">
+            <div class="container">
+                <div class="md_center text-center mb-5">
+                    <h2 style="font-size: 26px; font-weight: 800; color: #2fa3a8; margin: 0 0 6px 0;">Our Services</h2>
+                    <span
+                        style="display: block; width: 72px; height: 4px; background: linear-gradient(90deg, #2fa3a8, #7dd4d7); border-radius: 4px; margin: 14px auto 0;"></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                        <div class="box p-4 shadow rounded mb-2"
+                            style="background-color: #dfd7ff;border: 2px solid #9284d2;border-radius: 0.25rem !important;">
+                            <a href="https://www.techvoot.com/odoo/odoo-implementation" target="_blank"
+                                style="text-decoration: none;">
+                                <div class="icon_img mb-2">
+                                    <img src="info.png" alt="info" style="height: 55px;"></img>
+                                </div>
+                                <div class="content">
+                                    <p class="mb-0" style="font-size: 18px;color: #604eaf;font-weight: bold;">Odoo
+                                        Implementation
+                                        </li>
+                                        </ul>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <div class="box p-4 shadow rounded mb-2"
+                            style="background-color: #ffcee2;border: 2px solid #c5648c;border-radius: 0.25rem !important;">
+                            <a href="https://www.techvoot.com/odoo/odoo-customisation" target="_blank"
+                                style="text-decoration: none;">
+                                <div class="icon_img mb-2">
+                                    <!-- <span class="fa fa-cogs" style="font-size: 50px;color: #fff;"></span> -->
+                                    <img src="setting.png" alt="setting" style="height: 55px;"></img>
+                                </div>
+                                <div class="content">
+                                    <p class="mb-0" style="font-size: 18px;color: #b54574;font-weight: bold;">Odoo
+                                        Customization</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <div class="box p-4 shadow rounded mb-2"
+                            style="background-color: #dfe8b4;border: 2px solid #97a362;border-radius: 0.25rem !important;">
+                            <a href="https://www.techvoot.com/odoo/odoo-consulting" target="_blank"
+                                style="text-decoration: none;">
+                                <div class="icon_img mb-2">
+                                    <!-- <span class="fa fa-users" style="font-size: 50px;color: #fff;"></span> -->
+                                    <img src="user.png" alt="user" style="height: 55px;"></img>
+                                </div>
+                                <div class="content">
+                                    <p class="mb-0" style="font-size: 18px;color: #7f9037;font-weight: bold;">Odoo
+                                        Consulting
+                                        </li>
+                                        </ul>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <div class="box p-4 shadow rounded mb-2"
+                            style="background-color: #eaddca;border: 2px solid #a38762;border-radius: 0.25rem !important;">
+                            <a href="https://www.techvoot.com/odoo/odoo-migration" target="_blank"
+                                style="text-decoration: none;">
+                                <div class="icon_img mb-2">
+                                    <!-- <span class="fa fa-mobile" style="font-size: 50px;color: #fff;"></span> -->
+                                    <img src="mobileapp.png" alt="mobileapp" style="height: 55px;"></img>
+                                </div>
+                                <div class="content">
+                                    <p class="mb-0" style="font-size: 18px;color: #946d38;font-weight: bold;">Odoo
+                                        Migration</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-3 text-center">
-                    <div class="box p-4 shadow rounded mb-2" style="background-color: #dfd7ff;border: 2px solid #9284d2;border-radius: 0.25rem !important;">
-                        <a href="https://www.techvoot.com/odoo/odoo-implementation" target="_blank" style="text-decoration: none;">
-                            <div class="icon_img mb-2">
-                                <img src="info.png" alt="info" style="height: 55px;"></img>
-                            </div>
-                            <div class="content">
-                                <p class="mb-0" style="font-size: 18px;color: #604eaf;font-weight: bold;">Odoo Implementation
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-3 text-center">
-                    <div class="box p-4 shadow rounded mb-2" style="background-color: #ffcee2;border: 2px solid #c5648c;border-radius: 0.25rem !important;">
-                        <a href="https://www.techvoot.com/odoo/odoo-customisation" target="_blank" style="text-decoration: none;">
-                            <div class="icon_img mb-2">
-                                <!-- <span class="fa fa-cogs" style="font-size: 50px;color: #fff;"></span> -->
-                                <img src="setting.png" alt="setting" style="height: 55px;"></img>
-                            </div>
-                            <div class="content">
-                                <p class="mb-0" style="font-size: 18px;color: #b54574;font-weight: bold;">Odoo Customization</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-3 text-center">
-                    <div class="box p-4 shadow rounded mb-2" style="background-color: #dfe8b4;border: 2px solid #97a362;border-radius: 0.25rem !important;">
-                        <a href="https://www.techvoot.com/odoo/odoo-consulting" target="_blank" style="text-decoration: none;">
-                            <div class="icon_img mb-2">
-                                <!-- <span class="fa fa-users" style="font-size: 50px;color: #fff;"></span> -->
-                                <img src="user.png" alt="user" style="height: 55px;"></img>
-                            </div>
-                            <div class="content">
-                                <p class="mb-0" style="font-size: 18px;color: #7f9037;font-weight: bold;">Odoo Consulting
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-3 text-center">
-                    <div class="box p-4 shadow rounded mb-2" style="background-color: #eaddca;border: 2px solid #a38762;border-radius: 0.25rem !important;">
-                        <a href="https://www.techvoot.com/odoo/odoo-migration" target="_blank" style="text-decoration: none;">
-                            <div class="icon_img mb-2">
-                                <!-- <span class="fa fa-mobile" style="font-size: 50px;color: #fff;"></span> -->
-                                <img src="mobileapp.png" alt="mobileapp" style="height: 55px;"></img>
-                            </div>
-                            <div class="content">
-                                <p class="mb-0" style="font-size: 18px;color: #946d38;font-weight: bold;">Odoo Migration</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-        </div>
-    </div>
+        </section>
 
 
-    <!-- ══════════════════════════════════════════
+        <!-- ══════════════════════════════════════════
          CTA BUTTONS
     ══════════════════════════════════════════ -->
-    <div style="padding: 52px 0; background: #ffffff;">
-        <div class="container">
-            <div class="row justify-content-center" style="margin: 0 -6px; display: flex; justify-content: center; flex-wrap: wrap;">
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 px-2 mb-2">
-                    <a href="https://www.techvoot.com/" target="_blank" style="display: flex !important; align-items: center !important; justify-content: center !important; gap: 10px !important; padding: 16px 28px !important; border-radius: 12px !important; font-size: 16px !important; font-weight: 700 !important; text-decoration: none !important; color: #ffffff !important; background: #2fa3a8 !important; box-shadow: 0 4px 16px rgba(0,0,0,0.15) !important; text-align: center;">
-                        <i class="fa fa-globe" style="font-size: 24px !important; color: #ffffff !important; margin-right: 8px;"></i> Website
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 px-2 mb-2">
-                    <a href="mailto:hello@techvoot.com" target="_blank" style="display: flex !important; align-items: center !important; justify-content: center !important; gap: 10px !important; padding: 16px 28px !important; border-radius: 12px !important; font-size: 16px !important; font-weight: 700 !important; text-decoration: none !important; color: #ffffff !important; background: #ce493b !important; box-shadow: 0 4px 16px rgba(0,0,0,0.15) !important; text-align: center;">
-                        <i class="fa fa-envelope" style="font-size: 24px !important; color: #ffffff !important; margin-right: 8px;"></i> Email Us
-                    </a>
+        <div style="padding: 52px 0; background: #ffffff;">
+            <div class="container">
+                <div class="row justify-content-center"
+                    style="margin: 0 -6px; display: flex; justify-content: center; flex-wrap: wrap;">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 px-2 mb-2">
+                        <a href="https://www.techvoot.com/" target="_blank"
+                            style="display: flex !important; align-items: center !important; justify-content: center !important; gap: 10px !important; padding: 16px 28px !important; border-radius: 12px !important; font-size: 16px !important; font-weight: 700 !important; text-decoration: none !important; color: #ffffff !important; background: #2fa3a8 !important; box-shadow: 0 4px 16px rgba(0,0,0,0.15) !important; text-align: center;">
+                            <i class="fa fa-globe"
+                                style="font-size: 24px !important; color: #ffffff !important; margin-right: 8px;"></i>
+                            Website
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 px-2 mb-2">
+                        <a href="mailto:hello@techvoot.com" target="_blank"
+                            style="display: flex !important; align-items: center !important; justify-content: center !important; gap: 10px !important; padding: 16px 28px !important; border-radius: 12px !important; font-size: 16px !important; font-weight: 700 !important; text-decoration: none !important; color: #ffffff !important; background: #ce493b !important; box-shadow: 0 4px 16px rgba(0,0,0,0.15) !important; text-align: center;">
+                            <i class="fa fa-envelope"
+                                style="font-size: 24px !important; color: #ffffff !important; margin-right: 8px;"></i>
+                            Email Us
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 
-</div>
-
 </body>
+
 </html>
