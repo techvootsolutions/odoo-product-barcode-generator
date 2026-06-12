@@ -12,7 +12,7 @@
     "description": """In "Product Barcode Generator" Module Users Can Generate Product Barcodes Automatically Through Configurable Settings And Barcode Generation Tools The Module Helps Maintain Unique And Standardized Barcodes For Products While Improving Inventory Accuracy Reducing Manual Work And Simplifying Product Identification Across Business Operations""",
     "author": "Techvoot Solutions",
     'website': "https://www.techvoot.com",
-    "license": "LGPL-3",
+    "license": "OPL-1",
     "depends": [
         "base",
         "base_setup",
